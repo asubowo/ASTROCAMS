@@ -1,0 +1,57 @@
+#!/bin/bash
+
+while true; do
+
+  _dfiles="/mnt/vbox_share/INPUT/*.jpg"
+  
+  for f in $_dfiles; do
+     if [ -f $f ]; then
+        echo -e "File is -$f\n" 
+  echo -e "Solving...\n"
+
+        /home/astrometry/astrometry.net-21399/blind/solve-field $f   
+        echo -e "Completed. Now pulling calibration data.\n"
+ 
+	ngc="-ngc"
+	indx="-indx"
+	objs="-objs"
+	wcsinfo="_WCSINFO"
+
+	ffname=${f##*/}
+        ffname=${ffname%_*}
+	fileName=${f##*/}
+	fileName=${fileName%.*}
+	echo $fullFileName
+	echo $ffname
+	echo -e "Saving calibration info to text file in LastSolved directory.\n"
+
+        /home/astrometry/astrometry.net-21399/blind/wcsinfo $fileName.wcs > /mnt/vbox_share/OUTPUT/LastSolved/$ffname.txt
+	echo -e "Done.\n"
+
+	echo -e "Moving solved image to LastSolved directory.\n"
+	mv /mnt/vbox_share/INPUT/$fileName$ngc.png /mnt/vbox_share/OUTPUT/LastSolved/$fileName$ngc.png
+	echo -e "Moving .wcs file to LastSolved directory.\n"
+mv /mnt/vbox_share/INPUT/$fileName.wcs /mnt/vbox_share/OUTPUT/LastSolved/$fileName$wcsinfo.wcs
+
+	echo -e "Cleaning up input folder...\n"
+	rm /mnt/vbox_share/INPUT/$fileName.jpg
+	rm /mnt/vbox_share/INPUT/$fileName.axy
+	rm /mnt/vbox_share/INPUT/$fileName.corr
+	rm /mnt/vbox_share/INPUT/$fileName.match
+	rm /mnt/vbox_share/INPUT/$fileName.new
+	rm /mnt/vbox_share/INPUT/$fileName.rdls
+	rm /mnt/vbox_share/INPUT/$fileName.solved
+	rm /mnt/vbox_share/INPUT/$fileName$indx.png
+	rm /mnt/vbox_share/INPUT/$fileName$indx.xyls
+	rm /mnt/vbox_share/INPUT/$fileName$objs.png
+	
+	echo -e "Done.\n"
+#     else
+#        echo "No jpg file..."
+     fi
+  done
+
+  sleep 2
+done
+
+
