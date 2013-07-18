@@ -4,7 +4,7 @@ ASTROCAMS
 ASTROCAMS - providing CAMS users a way to easily re-calibrate their camera through cross-platform data manipulation.
 
 Introduction
-
+============
 Welcome to ASTROCAMS! I'm glad you decided to use my software to help facilitate your CAMS camera calibration process. I highly suggest you read over this Wiki before operating ASTROCAMS, as ASTROCAMS cannot function by itself - it requires additional resources the user must download and manually install.
 How ASTROCAMS works
 
@@ -27,18 +27,18 @@ ASTROCAMS will then present the user with an annotated picture similar to the fo
 
 Should the user decide to save the calibration data as a text file, the file will be formatted like the example shown below:
 
-ASTROMETRIC SOLUTION DATA OF [FF file name]
-Saved and solved on [date FF file was submitted and solved on]
-//ASTROCAMS - BUILD [build number] //Astrometry - 21399
-===============================================================
-Center (RA, Dec): (24,761, 64.036)
-Size: (29.97 x 22.17 deg)
-Radius: 37.279 deg
-Pixel Scale: 168.648 arcsec/pixel
-Orientation: Up is -13.814 E of N
+    ASTROMETRIC SOLUTION DATA OF [FF file name]
+    Saved and solved on [date FF file was submitted and solved on]
+    //ASTROCAMS - BUILD [build number] //Astrometry - 21399
+    ===============================================================
+    Center (RA, Dec): (24,761, 64.036)
+    Size: (29.97 x 22.17 deg)
+    Radius: 37.279 deg
+    Pixel Scale: 168.648 arcsec/pixel
+    Orientation: Up is -13.814 E of N
 
 Required downloads
-
+==================
 Please see the installation page for information on how to install the following pieces of software.
 
     Oracle VirtualBox? Virtual Machine Software
